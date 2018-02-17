@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
+
+import App from './App';
 import router from './router';
 import store from './store';
 
@@ -9,12 +11,8 @@ Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
-  name: 'CoinTop',
+  components: { App },
   router,
   store,
-  template: `
-    <div id="app">
-      <router-view></router-view>
-    </div>
-  `,
+  template: '<App />',
 }).$mount('#app');
