@@ -2,7 +2,7 @@
   "name": "cointop",
   "version": "0.0.0",
   "author": "Fatih Acet <acetfatih@gmail.com>",
-  "description": "CoinTop is a desktop app to track your portfolio on multiple exchanges",
+  "description": "CoinTop is a desktop app to track your portfolio in realtime.",
   "license": null,
   "main": "./dist/electron/main.js",
   "scripts": {
