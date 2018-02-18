@@ -1,5 +1,8 @@
 export default {
-  setLoadingState(state, loadingState) {
-    state.isLoading = loadingState;
+  toggleLoadingState(state) {
+    state.isLoading = !state.isLoading;
+  },
+  toggleAddExchangeModal(state) {
+    state.isAddExchangeModalVisible = !state.isAddExchangeModalVisible;
   },
 };

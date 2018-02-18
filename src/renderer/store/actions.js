@@ -1,5 +1,8 @@
 export default {
   fetchData({ commit }) {
-    commit('setLoadingState', true);
+    commit('toggleLoadingState');
+  },
+  toggleAddExchangeModal({ commit }) {
+    commit('toggleAddExchangeModal');
   },
 };

@@ -1,6 +1,7 @@
 <script>
 import { mapState } from 'vuex';
 import AppHeader from './components/AppHeader';
+import AddExchangeModal from './components/AddExchangeModal';
 
 export default {
   name: 'CoinTop',
@@ -24,6 +25,7 @@ export default {
       v-if="isLoading"
       class="app-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"
     ></div>
+    <add-exchange-modal />
     <router-view></router-view>
   </main>
 </div>
