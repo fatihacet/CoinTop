@@ -19,16 +19,16 @@ export default {
 
 <template>
   <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <app-header />
-  <main class="mdl-layout__content">
-    <div
-      v-if="isLoading"
-      class="app-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"
-    ></div>
-    <add-exchange-modal />
-    <router-view></router-view>
-  </main>
-</div>
+    <app-header />
+    <main class="mdl-layout__content">
+      <div
+        v-if="isLoading"
+        class="app-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"
+      ></div>
+      <add-exchange-modal />
+      <router-view></router-view>
+    </main>
+  </div>
 </template>
 
 <style lang="scss">
