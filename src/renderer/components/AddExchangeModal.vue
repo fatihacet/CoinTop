@@ -1,6 +1,7 @@
 <script>
 import { mapState, mapActions } from 'vuex';
 import exchanges from '../config/exchanges';
+import credentialService from '../services/credentials';
 
 export default {
   data() {
@@ -13,6 +14,11 @@ export default {
     ...mapState([
       'isAddExchangeModalVisible',
     ]),
+    isCredentialsEntered() {
+      const { key, secret } = this.credentials;
+
+      return this.exchange !== '!' && key && secret;
+    },
     exchangeFields() {
       const exchange = exchanges.find(ex => ex.key === this.exchange);
 
@@ -27,6 +33,13 @@ export default {
       this.toggleAddExchangeModal();
       this.exchange = '!';
       this.credentials = {};
+    },
+    async save() {
+      try {
+        await credentialService.saveCredential(this.exchange, this.credentials);
+      } catch(e) {
+
+      }
     },
   },
   created() {
@@ -84,6 +97,8 @@ export default {
 
     <div class="mdl-dialog__actions">
       <button
+        @click="save"
+        :disabled="!isCredentialsEntered"
         type="button"
         class="mdl-button"
       >

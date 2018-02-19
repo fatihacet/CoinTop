@@ -2,7 +2,7 @@ const keytar = require('keytar');
 const APP_NAME = 'CoinTop';
 
 export default {
-  async setCredential(exchange, credentials) {
+  async saveCredential(exchange, credentials) {
     await keytar.setPassword(APP_NAME, exchange, JSON.stringify(credentials));
   },
   async getCredential(exchange) {
