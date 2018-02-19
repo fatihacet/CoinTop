@@ -2,6 +2,7 @@
 import { mapState, mapActions } from 'vuex';
 import exchanges from '../config/exchanges';
 import credentialService from '../services/credentials';
+import notification from '../utils/notifications';
 
 export default {
   data() {
@@ -37,8 +38,10 @@ export default {
     async save() {
       try {
         await credentialService.saveCredential(this.exchange, this.credentials);
+        notification.show('Credential saved!');
+        this.cancel(); // to close and revert state
       } catch(e) {
-
+        notification.show('Failed to save credential.');
       }
     },
   },
