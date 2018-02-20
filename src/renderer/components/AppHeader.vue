@@ -6,6 +6,7 @@ export default {
   methods: {
     ...mapActions([
       'toggleAddExchangeModal',
+      'toggleManageExchangesModal',
     ]),
   },
 };
@@ -22,6 +23,12 @@ export default {
           class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
         >
           Add Exchange
+        </button>
+        <button
+          @click="toggleManageExchangesModal"
+          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+        >
+          Manage Exchanges
         </button>
       </nav>
     </div>

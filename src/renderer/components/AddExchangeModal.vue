@@ -1,6 +1,5 @@
 <script>
-import { mapState, mapActions } from 'vuex';
-import exchanges from '../config/exchanges';
+import { mapState, mapGetters, mapActions } from 'vuex';
 import credentialService from '../services/credentials';
 import notification from '../utils/notifications';
 
@@ -13,7 +12,11 @@ export default {
   },
   computed: {
     ...mapState([
+      'exchangesList',
       'isAddExchangeModalVisible',
+    ]),
+    ...mapGetters([
+      'exchangesByKey',
     ]),
     isCredentialsEntered() {
       const { key, secret } = this.credentials;
@@ -21,9 +24,9 @@ export default {
       return this.exchange !== '!' && key && secret;
     },
     exchangeFields() {
-      const exchange = exchanges.find(ex => ex.key === this.exchange);
+      const exchange = this.exchangesByKey[this.exchange] || {};
 
-      return exchange ? exchange.fields : null;
+      return exchange.fields;
     },
   },
   methods: {
@@ -44,9 +47,6 @@ export default {
         notification.show('Failed to save credential.');
       }
     },
-  },
-  created() {
-    this.exchanges = exchanges;
   },
 };
 </script>
@@ -72,7 +72,7 @@ export default {
             class="mdl-selectfield__select">
             <option value="!">Select an exchange</option>
             <option
-              v-for="exchange in exchanges"
+              v-for="exchange in exchangesList"
               :key="exchange.key"
               :value="exchange.key"
             >
@@ -124,7 +124,8 @@ export default {
   margin-top: 150px;
 
   .mdl-selectfield,
-  .mdl-textfield {
+  .mdl-textfield,
+  table {
     width: 100%;
   }
 

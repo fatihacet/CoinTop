@@ -17,4 +17,7 @@ export default {
   async getCredentials() {
     return keytar.findCredentials(APP_NAME);
   },
+  async removeCredential(exchange) {
+    return keytar.deletePassword(APP_NAME, exchange);
+  },
 };

@@ -2,12 +2,14 @@
 import { mapState } from 'vuex';
 import AppHeader from './components/AppHeader';
 import AddExchangeModal from './components/AddExchangeModal';
+import ManageExchangesModal from './components/ManageExchangesModal';
 
 export default {
   name: 'CoinTop',
   components: {
     AppHeader,
     AddExchangeModal,
+    ManageExchangesModal,
   },
   computed: {
     ...mapState([
@@ -26,6 +28,7 @@ export default {
         class="app-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"
       ></div>
       <add-exchange-modal />
+      <manage-exchanges-modal />
       <router-view></router-view>
     </main>
     <div class="mdl-snackbar mdl-js-snackbar">

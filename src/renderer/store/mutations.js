@@ -5,4 +5,7 @@ export default {
   toggleAddExchangeModal(state) {
     state.isAddExchangeModalVisible = !state.isAddExchangeModalVisible;
   },
+  toggleManageExchangesModal(state) {
+    state.isManageExchangesModalVisible = !state.isManageExchangesModalVisible;
+  },
 };

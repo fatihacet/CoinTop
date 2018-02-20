@@ -5,4 +5,7 @@ export default {
   toggleAddExchangeModal({ commit }) {
     commit('toggleAddExchangeModal');
   },
+  toggleManageExchangesModal({ commit }) {
+    commit('toggleManageExchangesModal');
+  },
 };
