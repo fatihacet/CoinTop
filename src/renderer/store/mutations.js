@@ -8,4 +8,7 @@ export default {
   toggleManageExchangesModal(state) {
     state.isManageExchangesModalVisible = !state.isManageExchangesModalVisible;
   },
+  setConfiguredExchanges(state, exchanges) {
+    state.configuredExchanges = exchanges;
+  },
 };

@@ -5,4 +5,5 @@ export default {
   exchangesList: exchanges,
   isAddExchangeModalVisible: false,
   isManageExchangesModalVisible: false,
+  configuredExchanges: [],
 };

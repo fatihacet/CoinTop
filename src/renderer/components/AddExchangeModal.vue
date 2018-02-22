@@ -32,6 +32,7 @@ export default {
   methods: {
     ...mapActions([
       'toggleAddExchangeModal',
+      'fetchConfiguredExchanges',
     ]),
     cancel() {
       this.toggleAddExchangeModal();
@@ -43,6 +44,7 @@ export default {
         await credentialService.saveCredential(this.exchange, this.credentials);
         notification.show('Credential saved!');
         this.cancel(); // to close and revert state
+        this.fetchConfiguredExchanges();
       } catch(e) {
         notification.show('Failed to save credential.');
       }

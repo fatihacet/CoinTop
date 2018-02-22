@@ -1,8 +1,13 @@
 <script>
-import { mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'AppHeader',
+  computed: {
+    ...mapState([
+      'configuredExchanges',
+    ]),
+  },
   methods: {
     ...mapActions([
       'toggleAddExchangeModal',
@@ -19,17 +24,39 @@ export default {
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
         <button
+          v-show="!configuredExchanges.length"
           @click="toggleAddExchangeModal"
           class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
         >
           Add Exchange
         </button>
+
         <button
-          @click="toggleManageExchangesModal"
-          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+          v-show="configuredExchanges.length"
+          id="header-menu"
+          class="mdl-button mdl-js-button mdl-button--icon"
         >
-          Manage Exchanges
+          <i class="material-icons">more_vert</i>
         </button>
+
+        <ul
+          v-show="configuredExchanges.length"
+          class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+          for="header-menu"
+        >
+          <li
+            @click="toggleAddExchangeModal"
+            class="mdl-menu__item"
+          >
+            Add Exchange
+          </li>
+          <li
+            @click="toggleManageExchangesModal"
+            class="mdl-menu__item"
+          >
+            Manage Exchanges
+          </li>
+        </ul>
       </nav>
     </div>
   </header>

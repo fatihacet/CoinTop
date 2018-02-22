@@ -7,12 +7,12 @@ export default {
   data() {
     return {
       isLoading: true,
-      configuredExchanges: [],
     }
   },
   computed: {
     ...mapState([
       'isManageExchangesModalVisible',
+      'configuredExchanges',
     ]),
     ...mapGetters([
       'exchangesByKey',
@@ -22,6 +22,7 @@ export default {
     ...mapActions([
       'toggleAddExchangeModal',
       'toggleManageExchangesModal',
+      'fetchConfiguredExchanges',
     ]),
     add() {
       this.toggleManageExchangesModal();
@@ -32,13 +33,7 @@ export default {
     },
     async fetch() {
       this.isLoading = true;
-
-      try {
-        this.configuredExchanges = await credentialService.getCredentials();
-      } catch(e) {
-        notification.show('Failed to fetch configured exchanges list.');
-      }
-
+      await this.fetchConfiguredExchanges();
       this.isLoading = false;
     },
     async remove(credential) {
