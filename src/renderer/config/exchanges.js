@@ -4,7 +4,7 @@ export default [
     key: 'binance',
     fields: [
       {
-        name: 'key',
+        name: 'apiKey',
         type: 'text',
         label: 'API Key',
       },
@@ -20,7 +20,7 @@ export default [
     key: 'bittrex',
     fields: [
       {
-        name: 'key',
+        name: 'apiKey',
         type: 'text',
         label: 'API Key',
       },
@@ -41,7 +41,7 @@ export default [
         label: 'Cex.io User Id',
       },
       {
-        name: 'key',
+        name: 'apiKey',
         type: 'text',
         label: 'API Key',
       },

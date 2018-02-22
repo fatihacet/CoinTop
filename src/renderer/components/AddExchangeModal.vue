@@ -19,9 +19,9 @@ export default {
       'exchangesByKey',
     ]),
     isCredentialsEntered() {
-      const { key, secret } = this.credentials;
+      const { apiKey, secret } = this.credentials;
 
-      return this.exchange !== '!' && key && secret;
+      return this.exchange !== '!' && apiKey && secret;
     },
     exchangeFields() {
       const exchange = this.exchangesByKey[this.exchange] || {};
