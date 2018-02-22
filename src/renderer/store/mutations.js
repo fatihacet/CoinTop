@@ -11,4 +11,10 @@ export default {
   setConfiguredExchanges(state, exchanges) {
     state.configuredExchanges = exchanges;
   },
+  setBalances(state, balances) {
+    state.totalBalance = balances.total;
+    delete balances.total;
+
+    state.balances = balances;
+  },
 };

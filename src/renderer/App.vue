@@ -1,8 +1,9 @@
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 import AddExchangeModal from './components/AddExchangeModal';
 import ManageExchangesModal from './components/ManageExchangesModal';
+const { ipcRenderer } = require('electron');
 
 export default {
   name: 'CoinTop',
@@ -15,6 +16,21 @@ export default {
     ...mapState([
       'isLoading',
     ]),
+  },
+  methods: {
+    ...mapActions([
+      'toggleLoadingState',
+      'fetchBalances',
+    ]),
+  },
+  mounted() {
+    ipcRenderer.on('balancesFetched', (event, arg) => {
+      console.log(arg) // prints "pong"
+      this.toggleLoadingState();
+    });
+
+    // this.toggleLoadingState();
+    this.fetchBalances();
   },
 };
 </script>

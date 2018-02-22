@@ -1,4 +1,6 @@
-import { app, BrowserWindow } from 'electron' // eslint-disable-line
+import { app, BrowserWindow, ipcMain } from 'electron' // eslint-disable-line
+import exchangeService from './exchange';
+import exchange from './exchange';
 
 /**
  * Set `__static` path to static files in production
@@ -43,6 +45,13 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+
+ipcMain.on('fetchBalances', async (event, arg) => {
+  console.log(arg);
+  event.sender.send('balancesFetched', await exchangeService.fetchBalances());
+});
+
 
 /**
  * Auto Updater
