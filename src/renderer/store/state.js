@@ -6,5 +6,6 @@ export default {
   isAddExchangeModalVisible: false,
   isManageExchangesModalVisible: false,
   configuredExchanges: [],
+  totalBalance: null,
   balances: {},
 };

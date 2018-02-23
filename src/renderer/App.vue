@@ -21,15 +21,21 @@ export default {
     ...mapActions([
       'toggleLoadingState',
       'fetchBalances',
+      'setBalances',
     ]),
   },
   mounted() {
-    ipcRenderer.on('balancesFetched', () => {
+    ipcRenderer.on('balancesFetched', (event, data) => {
       this.toggleLoadingState();
+      this.setBalances(data);
     });
 
-    // this.toggleLoadingState();
     this.fetchBalances();
+    this.toggleLoadingState();
+
+    setInterval(() => {
+      this.fetchBalances();
+    }, 30000);
   },
 };
 </script>
@@ -40,8 +46,10 @@ export default {
     <main class="mdl-layout__content">
       <div
         v-if="isLoading"
-        class="app-progress mdl-progress mdl-js-progress mdl-progress__indeterminate"
-      ></div>
+        class="loader-container"
+      >
+        <div class="app-loader mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
+      </div>
       <add-exchange-modal />
       <manage-exchanges-modal />
       <router-view></router-view>
@@ -61,8 +69,10 @@ export default {
   background-position: 20px 13px;
 }
 
-.app-progress {
-  width: 100%;
+.loader-container {
+  margin: 50px auto;
+  width: 100px;
+  text-align: center;
 }
 
 dialog {

@@ -1,12 +1,10 @@
 /* eslint-disable */
 
 const ccxt = require('ccxt');
-const keys = {}
-
-const cex = new ccxt.cex(keys.cex);
-const bittrex = new ccxt.bittrex(keys.bittrex);
-const binance = new ccxt.binance(keys.binance);
-const portfolio = {};
+let cex = null;
+let bittrex = null;
+let binance = null;
+let portfolio = {};
 
 async function fetch(exchange) {
   const balance = await exchange.fetchBalance();
@@ -15,10 +13,34 @@ async function fetch(exchange) {
   return findCoins(exchange, balance, tickers);
 }
 
-async function fetchBalances() {
-  const cexWallet = await fetch(cex);
-  const bittrexWallet = await fetch(bittrex);
-  const binanceWallet = await fetch(binance);
+async function fetchBalances(keys) {
+  portfolio = {};
+  if (keys.cex) {
+    try {
+      cex = new ccxt.cex(keys.cex);
+      const cexWallet = await fetch(cex);
+    } catch (e) {
+      console.log('Failed to fetch Cex', e);
+    }
+  }
+
+  if (keys.bittrex) {
+    try {
+      bittrex = new ccxt.bittrex(keys.bittrex);
+      const bittrexWallet = await fetch(bittrex);
+    } catch (e) {
+      console.log('Failed to fetch Bittrex', e);
+    }
+  }
+
+  if (keys.binance) {
+    try {
+      binance = new ccxt.binance(keys.binance);
+      const binanceWallet = await fetch(binance);
+    } catch (e) {
+      console.log('Failed fetch Binance', e);
+    }
+  }
 
   portfolio.total = calculateTotal();
   return portfolio;

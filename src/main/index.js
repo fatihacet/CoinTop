@@ -45,12 +45,11 @@ app.on('activate', () => {
   }
 });
 
+ipcMain.on('fetchBalances', async (event, keys) => {
+  const balances = await exchangeService.fetchBalances(keys);
 
-ipcMain.on('fetchBalances', async (event, arg) => {
-  console.log(arg);
-  event.sender.send('balancesFetched', await exchangeService.fetchBalances());
+  event.sender.send('balancesFetched', balances);
 });
-
 
 /**
  * Auto Updater

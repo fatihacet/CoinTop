@@ -69,7 +69,12 @@ export default {
         </td>
       </tr>
     </table>
-    <h4 class="portfolio-total">Porfolio Total: {{totalBalance}} USD</h4>
+    <h4
+      v-if="totalBalance"
+      class="portfolio-total"
+    >
+      Porfolio Total: {{totalBalance}} USD
+    </h4>
   </div>
 </template>
 
