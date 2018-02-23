@@ -24,8 +24,7 @@ export default {
     ]),
   },
   mounted() {
-    ipcRenderer.on('balancesFetched', (event, arg) => {
-      console.log(arg) // prints "pong"
+    ipcRenderer.on('balancesFetched', () => {
       this.toggleLoadingState();
     });
 
@@ -64,5 +63,9 @@ export default {
 
 .app-progress {
   width: 100%;
+}
+
+dialog {
+  z-index: 1000;
 }
 </style>

@@ -45,7 +45,7 @@ export default {
         notification.show('Credential saved!');
         this.cancel(); // to close and revert state
         this.fetchConfiguredExchanges();
-      } catch(e) {
+      } catch (e) {
         notification.show('Failed to save credential.');
       }
     },

@@ -1,6 +1,6 @@
 import credentialService from '../services/credentials';
 import notification from '../utils/notifications';
-const { ipcRenderer } = require('electron');
+// const { ipcRenderer } = require('electron');
 
 export default {
   fetchBalances({ commit }) {

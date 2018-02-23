@@ -7,7 +7,7 @@ export default {
   data() {
     return {
       isLoading: true,
-    }
+    };
   },
   computed: {
     ...mapState([
@@ -39,7 +39,7 @@ export default {
     async remove(credential) {
       try {
         await credentialService.removeCredential(credential);
-      } catch(e) {
+      } catch (e) {
         notification.show('Failed to remove configuration.');
       }
 
@@ -58,7 +58,7 @@ export default {
     class="exchange-modal mdl-dialog"
     open
   >
-    <h4 class="mdl-dialog__title">Your configured exchanges</h4>
+    <h4 class="mdl-dialog__title">Configured exchanges</h4>
     <div class="mdl-dialog__content">
       <p>
         Below you can see your configured exchanges. For security reasons you cannot update exchange configuration. To update an exchange key/secret, please remove it first and add again.
@@ -90,7 +90,9 @@ export default {
               {{exchangesByKey[exchange.account].name}}
             </td>
             <td class="mdl-data-table__cell--non-numeric">
-              {{JSON.parse(exchange.password).key}}
+              <span class="apikey">
+                {{JSON.parse(exchange.password).apiKey}}
+              </span>
             </td>
             <td class="mdl-data-table__cell--non-numeric">
               ********
@@ -141,6 +143,15 @@ export default {
     p {
       margin: 10px 0 0;
     }
+  }
+
+  .apikey {
+    width: 250px;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 3px;
   }
 
   .no-text {

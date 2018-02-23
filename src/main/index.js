@@ -1,6 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron' // eslint-disable-line
 import exchangeService from './exchange';
-import exchange from './exchange';
 
 /**
  * Set `__static` path to static files in production
