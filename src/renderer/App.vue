@@ -19,23 +19,26 @@ export default {
   },
   methods: {
     ...mapActions([
-      'toggleLoadingState',
+      'setLoadingState',
+      'setUpdatingState',
       'fetchBalances',
       'setBalances',
     ]),
   },
   mounted() {
     ipcRenderer.on('balancesFetched', (event, data) => {
-      this.toggleLoadingState();
+      this.setLoadingState(false);
+      this.setUpdatingState(false);
       this.setBalances(data);
     });
 
     this.fetchBalances();
-    this.toggleLoadingState();
+    this.setLoadingState(true);
 
     setInterval(() => {
+      this.setUpdatingState(true);
       this.fetchBalances();
-    }, 30000);
+    }, 45000);
   },
 };
 </script>

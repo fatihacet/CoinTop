@@ -1,6 +1,6 @@
 import credentialService from '../services/credentials';
 import notification from '../utils/notifications';
-const { ipcRenderer } = require('electron');
+const { ipcRenderer } = require('electron'); // eslint-disable-line
 
 export default {
   async fetchBalances({ dispatch, state }) {
@@ -20,8 +20,11 @@ export default {
   setBalances({ commit }, balances) {
     commit('setBalances', balances);
   },
-  toggleLoadingState({ commit }) {
-    commit('toggleLoadingState');
+  setLoadingState({ commit }, flag) {
+    commit('setLoadingState', flag);
+  },
+  setUpdatingState({ commit }, flag) {
+    commit('toggleUpdatingState', flag);
   },
   toggleAddExchangeModal({ commit }) {
     commit('toggleAddExchangeModal');
