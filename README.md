@@ -1,28 +1,20 @@
-# cointop
+# <img src="static/app-icons/64x64.png" align="center" /> CoinTop
 
-> CoinTop is a desktop app to track your portfolio on multiple exchanges
+CoinTop is a desktop app to track your crypto portfolio on multiple exchanges in realtime. Add your **read only** API keys and enjoy!
 
-#### Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:9080
-npm run dev
-
-# build electron application for production
-npm run build
-
-# run unit tests
-npm test
+Currently supported exchanges are Binance.com, Bittrex.com and Cex.io. CoinTop uses [ccxt](https://github.com/ccxt/ccxt/) to connect the exchanges and technically it should be easy to support new changes in next versions.
 
 
-# lint all JS/Vue component files in `src/`
-npm run lint
+### Security
 
-```
+CoinTop uses [keytar](https://github.com/atom/node-keytar) from GitHub's Atom team and on macOS the credentials are managed by the Keychain, on Linux they are managed by the Secret Service API/libsecret, and on Windows they are managed by Credential Vault.
 
----
 
-This project was generated with [electron-vue](https://github.com/SimulatedGREG/electron-vue)@[1c165f7](https://github.com/SimulatedGREG/electron-vue/tree/1c165f7c5e56edaf48be0fbb70838a1af26bb015) using [vue-cli](https://github.com/vuejs/vue-cli). Documentation about the original structure can be found [here](https://simulatedgreg.gitbooks.io/electron-vue/content/index.html).
+### Important
+
+Please make sure that your API keys only have **read access**. Using read only API keys, it is impossible for CoinTop to change any data on your behalf on the exchanges you added.
+
+
+### Disclaimer
+
+Cointop is currently on development and may contain bugs. It may not work at all. If you want to contribute CoinTop, please open an issue to report issues you have. Feel free to create an issue for feature requests. Thank you for your feedbacks.
