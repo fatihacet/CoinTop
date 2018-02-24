@@ -131,6 +131,13 @@ export default {
       >
         Close
       </button>
+      <button
+        @click="add"
+        type="button"
+        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+      >
+        Add Exchange
+      </button>
     </div>
   </dialog>
 </template>

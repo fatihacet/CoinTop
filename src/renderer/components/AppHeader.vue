@@ -7,12 +7,21 @@ export default {
     ...mapState([
       'configuredExchanges',
     ]),
+    hasExchange() {
+      return this.configuredExchanges.length;
+    },
+    buttonTitle() {
+      return this.hasExchange ? 'Manage Exchanges' : 'Add Exchange';
+    },
   },
   methods: {
     ...mapActions([
       'toggleAddExchangeModal',
       'toggleManageExchangesModal',
     ]),
+    handleClick() {
+      this.hasExchange ? this.toggleManageExchangesModal() : this.toggleAddExchangeModal();
+    },
   },
 };
 </script>
@@ -24,48 +33,33 @@ export default {
       <span class="mdl-layout__title">CoinTop</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
+        >
         <button
-          v-show="!configuredExchanges.length"
-          @click="toggleAddExchangeModal"
+          @click="handleClick"
           class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
         >
-          Add Exchange
+          {{buttonTitle}}
         </button>
-
-        <button
-          v-show="configuredExchanges.length"
-          id="header-menu"
-          class="mdl-button mdl-js-button mdl-button--icon"
-        >
-          <i class="material-icons">more_vert</i>
-        </button>
-
-        <ul
-          v-show="configuredExchanges.length"
-          class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-          for="header-menu"
-        >
-          <li
-            @click="toggleAddExchangeModal"
-            class="mdl-menu__item"
-          >
-            Add Exchange
-          </li>
-          <li
-            @click="toggleManageExchangesModal"
-            class="mdl-menu__item"
-          >
-            Manage Exchanges
-          </li>
-        </ul>
       </nav>
     </div>
   </header>
 </template>
 
 <style lang="scss">
-.app-logo {
-  position: absolute;
-  left: 20px;
+.app-header {
+  .app-logo {
+    position: absolute;
+    left: 20px;
+  }
+
+  .header-loader {
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
+
+    > .mdl-spinner__layer {
+      border-color: #FFF;
+    }
+  }
 }
 </style>
