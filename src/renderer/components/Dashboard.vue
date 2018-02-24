@@ -53,7 +53,7 @@ export default {
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           <span class="coin">{{coin.name}}</span>
-          </br>
+          <br />
           <span class="symbol">
             {{coin.symbol}}
           </span>
