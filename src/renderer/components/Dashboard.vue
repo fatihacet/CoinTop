@@ -83,6 +83,7 @@ export default {
   table {
     width: 90%;
     margin: 3% 5%;
+    font-size: 15px;
 
     td:last-child {
       width: 20%;
