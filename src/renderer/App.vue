@@ -62,13 +62,6 @@ export default {
 </template>
 
 <style lang="scss">
-.app-header  {
-  background-image: url(/static/logo.png);
-  background-repeat: no-repeat;
-  background-size: 48px 37px;
-  background-position: 20px 13px;
-}
-
 .loader-container {
   margin: 50px auto;
   width: 100px;

@@ -20,6 +20,7 @@ export default {
 <template>
   <header class="app-header mdl-layout__header">
     <div class="mdl-layout__header-row">
+      <img class="app-logo" src="static/logo.png" width="48" height="37" />
       <span class="mdl-layout__title">CoinTop</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation">
@@ -61,3 +62,10 @@ export default {
     </div>
   </header>
 </template>
+
+<style lang="scss">
+.app-logo {
+  position: absolute;
+  left: 20px;
+}
+</style>
