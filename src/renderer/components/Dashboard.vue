@@ -62,7 +62,7 @@ export default {
           {{coin.amount}}
         </td>
         <td class="mdl-data-table__cell--non-numeric">
-          {{coin.usdPrice || coin.price}}
+          {{coin.usdPrice ? `${coin.usdPrice.toFixed(2)} USD` : `฿ ${coin.price.toFixed(8)}`}}
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           {{parseFloat(coin.total, 10).toFixed(2)}} USD
