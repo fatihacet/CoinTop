@@ -33,6 +33,8 @@ export default {
     ...mapActions([
       'toggleAddExchangeModal',
       'fetchConfiguredExchanges',
+      'setLoadingState',
+      'fetchBalances',
     ]),
     cancel() {
       this.toggleAddExchangeModal();
@@ -45,6 +47,8 @@ export default {
         notification.show('Credential saved!');
         this.cancel(); // to close and revert state
         this.fetchConfiguredExchanges();
+        this.setLoadingState(true);
+        this.fetchBalances();
       } catch (e) {
         notification.show('Failed to save credential.');
       }

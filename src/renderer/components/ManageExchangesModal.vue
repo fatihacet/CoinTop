@@ -23,6 +23,8 @@ export default {
       'toggleAddExchangeModal',
       'toggleManageExchangesModal',
       'fetchConfiguredExchanges',
+      'setLoadingState',
+      'fetchBalances',
     ]),
     add() {
       this.toggleManageExchangesModal();
@@ -39,6 +41,10 @@ export default {
     async remove(credential) {
       try {
         await credentialService.removeCredential(credential);
+        if (this.configuredExchanges.length) {
+          this.setLoadingState(true);
+          this.fetchBalances();
+        }
       } catch (e) {
         notification.show('Failed to remove configuration.');
       }
