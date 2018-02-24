@@ -36,7 +36,7 @@ export default {
       <tr>
         <th class="icon-cell"></th>
         <th class="mdl-data-table__cell--non-numeric">Coin</th>
-        <th class="mdl-data-table__cell--non-numeric">Amount</th>
+        <th class="mdl-data-table__cell--non-numeric">Holdings</th>
         <th class="mdl-data-table__cell--non-numeric">Price</th>
         <th class="mdl-data-table__cell--non-numeric">Total</th>
       </tr>
@@ -65,7 +65,7 @@ export default {
           {{coin.usdPrice || coin.price}}
         </td>
         <td class="mdl-data-table__cell--non-numeric">
-          {{coin.total}} USD
+          {{parseFloat(coin.total, 10).toFixed(2)}} USD
         </td>
       </tr>
     </table>
@@ -73,7 +73,7 @@ export default {
       v-if="totalBalance"
       class="portfolio-total"
     >
-      Porfolio Total: {{totalBalance}} USD
+      Porfolio Total: {{totalBalance.toFixed(2)}} USD
     </h4>
   </div>
 </template>
@@ -83,6 +83,10 @@ export default {
   table {
     width: 90%;
     margin: 3% 5%;
+
+    td:last-child {
+      width: 20%;
+    }
 
     h4 {
       margin-bottom: 0;
