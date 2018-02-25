@@ -2,8 +2,9 @@
 
 CoinTop is a desktop app to track your crypto portfolio on multiple exchanges in realtime. Add your **read only** API keys and enjoy!
 
-Currently supported exchanges are Binance.com, Bittrex.com and Cex.io. CoinTop uses [ccxt](https://github.com/ccxt/ccxt/) to connect the exchanges and technically it should be easy to support new changes in next versions.
+![CoinTop](static/_cointop.gif)
 
+Currently supported exchanges are Binance.com, Bittrex.com and Cex.io. CoinTop uses [ccxt](https://github.com/ccxt/ccxt/) to connect the exchanges and technically it should be easy to support new changes in next versions.
 
 ### Security
 
