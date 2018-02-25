@@ -15,6 +15,9 @@ export default {
     iconErrorHandler(e) {
       e.target.classList.add('no-icon');
     },
+    graphUrl(symbol) {
+      return `https://images.cryptocompare.com/sparkchart/${symbol.split('/')[0]}/USD/latest.png?ts=${Date.now()}`;
+    },
   },
 };
 </script>
@@ -27,7 +30,7 @@ export default {
       class="mdl-data-table mdl-js-data-table mdl-shadow--2dp"
     >
       <tr>
-        <th class="mdl-data-table__cell--non-numeric" colspan="5">
+        <th class="mdl-data-table__cell--non-numeric" colspan="6">
           <h4>{{exchange.name}}</h4>
           <span>({{exchange.coins.length}} coins)</span>
           <h4 class="total">Total: {{exchange.total.toFixed(2)}} USD</h4>
@@ -39,6 +42,7 @@ export default {
         <th class="mdl-data-table__cell--non-numeric">Holdings</th>
         <th class="mdl-data-table__cell--non-numeric">Price</th>
         <th class="mdl-data-table__cell--non-numeric">Total</th>
+        <th class="mdl-data-table__cell--non-numeric">7 days Graph</th>
       </tr>
       <tr
         v-for="coin in exchange.coins"
@@ -66,6 +70,9 @@ export default {
         </td>
         <td class="mdl-data-table__cell--non-numeric">
           {{parseFloat(coin.total, 10).toFixed(2)}} USD
+        </td>
+        <td class="mdl-data-table__cell--non-numeric">
+          <img :src="graphUrl(coin.symbol)" />
         </td>
       </tr>
     </table>
