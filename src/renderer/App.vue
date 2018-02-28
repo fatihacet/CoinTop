@@ -65,6 +65,10 @@ export default {
 </template>
 
 <style lang="scss">
+.mdl-layout__content {
+  background: #f4f4f4;
+}
+
 .loader-container {
   margin: 50px auto;
   width: 100px;
