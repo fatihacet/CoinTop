@@ -1,11 +1,15 @@
 <script>
-import { mapState } from 'vuex';
+const electron = require('electron');
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   computed: {
     ...mapState([
       'balances',
       'totalBalance',
+    ]),
+    ...mapGetters([
+      'exchangesByKey',
     ]),
   },
   created() {
@@ -18,6 +22,17 @@ export default {
     graphUrl(symbol) {
       return `https://images.cryptocompare.com/sparkchart/${symbol.split('/')[0]}/USD/latest.png?ts=${Date.now()}`;
     },
+    openExchange(exchange, coin) {
+      const [f, t] = coin.symbol.split('/');
+      const exchangeConfig = this.exchangesByKey[exchange.name.toLowerCase()];
+
+      if (exchangeConfig) {
+        const to = t === 'USDT' ? 'USD' : t;
+        const url = exchangeConfig.urlSchema.replace('{{from}}', f).replace('{{to}}', to);
+
+        electron.shell.openExternal(url);
+      }
+    }
   },
 };
 </script>
@@ -56,7 +71,13 @@ export default {
           />
         </td>
         <td class="mdl-data-table__cell--non-numeric">
-          <span class="coin">{{coin.name}}</span>
+          <span class="coin">
+            <a
+              @click.prevent="openExchange(exchange, coin)"
+              href="#"
+              target="_blank"
+            >{{coin.name}}</a>
+          </span>
           <br />
           <span class="symbol">
             {{coin.symbol}}
@@ -129,13 +150,13 @@ export default {
 
   .symbol {
     font-size: 11px;
-    color: rgba(0,0,0,.54);
+    color: rgba(0, 0, 0, .54);
   }
 
   .portfolio-total {
     margin: 3% 5%;
     text-align: right;
-    color: rgba(0,0,0,.54);
+    color: rgba(0, 0, 0, .54);
   }
 }
 </style>
