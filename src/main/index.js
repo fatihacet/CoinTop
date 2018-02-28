@@ -22,6 +22,7 @@ function createWindow() {
     height: 780,
     width: 1200,
     useContentSize: true,
+    titleBarStyle: 'hidden',
   });
 
   mainWindow.loadURL(winURL);

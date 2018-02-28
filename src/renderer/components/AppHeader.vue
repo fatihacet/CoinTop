@@ -78,6 +78,9 @@ export default {
 
 <style lang="scss">
 .app-header {
+  padding-top: 20px;
+  -webkit-app-region: drag;
+
   .app-logo {
     position: absolute;
     left: 20px;
