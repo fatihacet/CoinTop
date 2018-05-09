@@ -101,7 +101,7 @@ export default {
       v-if="totalBalance"
       class="portfolio-total"
     >
-      Porfolio Total: {{totalBalance.toFixed(2)}} USD
+      Portfolio Total: {{totalBalance.toFixed(2)}} USD
     </h4>
   </div>
 </template>
